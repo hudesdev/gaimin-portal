@@ -1,0 +1,206 @@
+{
+  "team": {
+    "heading": "Our Team",
+    "sectionHeading": "get to know our team closer",
+    "desc": "Get ready to forge meaningful connections and experience the expertise, passion, and collaborative spirit of our exceptional team as we go beyond the conventional client-agency relationship, working side by side to understand your unique vision, align our strategies, and co-create remarkable solutions that propel your business towards unmatched success.",
+    "team_members": [
+      {
+        "name": "Feed",
+        "role": "CEO",
+        "imgURL": "member/feed.png",
+        "about": "Master in financial market @@ Onboard at StationF VC @@ Guiding the team with a strong strategic vision and a commitment to innovation. @@ Committed to fostering a community that empowers every single web3 user and enthusiasts alike @@ Alpha maxi @@ (He's the one who will really give a definition to the word 'utility')."
+      },
+      {
+        "name": "Halle",
+        "role": "CTO",
+        "imgURL": "member/halle.png",
+        "about": "Full Stack & BlockChain Engineer @@ Over 9 years of experience @@ Expertise in both front-end and back-end development, creating seamless user experiences. @@ Pioneering blockchain solutions that transform industries and redefine possibilities. @@ (He's the one who's transforming your dream into reality)"
+      },
+      {
+        "name": "Nxxn",
+        "role": "Advisor / Ambassador",
+        "imgURL": "member/nxxn.png",
+        "about": "2 years in NFTs @@ Leading Alpha in the biggest projects on Solana (Jelly, GKD and more) @@ Bringing connections and useful contacts to push the best tech with strong united powers. @@ Advising about branding solutions to make sure that the utility is accompanied by great design and perfect marketing decisions. @@ Finding the balance between Feed's endless ideas and GetLow's denials."
+      },
+      {
+        "name": "Getlow",
+        "role": "Lead Advisor",
+        "imgURL": "member/getlow.png",
+        "about": "Core team member of Enigma ventures and Oracles @@ Expert guidance for NFT initiatives in the Web3 ecosystem @@ Collaborate seamlessly with developers, designers, and marketers @@ Bridge technical and non-technical aspects for project success @@ (He's the one making you bullish asf)"
+      },
+      {
+        "name": "Legolas",
+        "role": "Sales Manager",
+        "imgURL": "member/legolas.png",
+        "about": "Master's in Petroleum Geology @@ Working full time Web3 since 2021 @@ Alpha provider and Thread writer @@ Excited about the endless possibilities that web3 can bring in the future @@ (He is the one you can ask for alpha)"
+      },
+      {
+        "name": "Milou",
+        "role": "Head dev",
+        "imgURL": "member/milou.png",
+        "about": "Full stack web3 developer @@ Previously worked on multiple high-end @@ Retail botting related projectss @@ (He's the 'bypass' boy, fear him!)"
+      },
+      {
+        "name": "Cally",
+        "role": "Backend Developer",
+        "imgURL": "member/cally.png",
+        "about": "Crafting with Rust and Golang: Our Systems Developer @@ Proficient in both Rust and Golang, crafting robust and high-performance systems. @@ Adept at leveraging Rust's memory safety and Golang's concurrency for efficient solutions. @@ Experienced in building backend infrastructure that scales seamlessly with demand. @@ (ngl, i'm just the crack here hehe)"
+      },
+      {
+        "name": "Evilgon",
+        "role": "Web3 Developer",
+        "imgURL": "member/evilgon.png",
+        "about": "8 years of overall software development experience @@ 4 years of specific blockchain development experience @@ He has worked with several programming languages including Solidity, C++, Go, Rust and JavaScript and have rich development experience both front-end and back-end @@ He has great experience and skills as a full-stack developer and as a blockchain developer"
+      },
+      {
+        "name": "Microgift",
+        "role": "Full Stack Develoepr",
+        "imgURL": "member/microgift.png",
+        "about": "Blockchain & Full Stack Develoepr @@ Over 7 years of experience @@ Love Solana.@@ (He is the gifted addition for your project.)"
+      },
+      {
+        "name": "Abracadabra",
+        "role": "UI/UX Designer",
+        "imgURL": "member/abra.png",
+        "about": "Crafting with Rust and Golang: Our Systems Developer @@ Proficient in both Rust and Golang, crafting robust and high-performance systems. @@ Adept at leveraging Rust's memory safety and Golang's concurrency for efficient solutions. @@ Experienced in building backend infrastructure that scales seamlessly with demand. @@ (ngl, i'm just the crack here hehe)"
+      },
+      {
+        "name": "Bewinxed",
+        "role": "Full Stack Developer",
+        "imgURL": "member/bewinxed.png",
+        "about": "Medical by profession, Healthcare IT by passion. @@ Worked for 8 Years as a Medical Dispatcher in Dubai & Qatar. @@ Been in crypto since 2017, made money arbitraging niche crypto coins between exchanges. @@ (He's the guy who's making your interaction on discord wayyyy better) "
+      },
+      {
+        "name": "Lonzo",
+        "role": "Main Designer",
+        "imgURL": "member/lonzo.png",
+        "about": "Graphics, motion, UI designer @@ Emphasising effective visual communication in designs. @@ Keen eye for aesthetics and user experience @@  Driven to use a blend of technical expertise and creativity to create impactful, practical designs. @@ (He's the one armed with a palette of hex codes and a canvas of pixels)"
+      },
+      {
+        "name": "AP",
+        "role": "Graphic Designer",
+        "imgURL": "member/AP.png",
+        "about": "Over 5 years of Experience @@ Skilled about using most of Adobe Programs @@ Experienced in social media & realisation  of Branding @@ Committed to create visual ideas for the comunication via social media @@ He's the one who had too many issues with its family (Arial and Times New Roman)!"
+      },
+      {
+        "name": "Malikz",
+        "role": "Marketing advisor",
+        "imgURL": "member/malikz.png",
+        "about": "Masters in Business Administration, BSc. in Industrial Engineering. @@ In Web2 working with a top 500 fortune company @@ Web3 Oracles team @@ Enigma ventures Scholar. @@ (He's the guy you might never heard but that will create THE goated network)"
+      },
+      {
+        "name": "Fapita",
+        "role": "Illustrator",
+        "imgURL": "member/Fapita.png",
+        "about": "10+ years experience @@ Worked with 3 massive japanese anime studio @@ The creative visionary behind the captivating visuals that define our NFT universe. @@ (He's the one who's turning imagination into breathtaking art)"
+      },
+      {
+        "name": "Satria",
+        "role": "PFP Artist",
+        "imgURL": "member/Satria.png",
+        "about": "I worked as a comic freelancer and illustrator @@ I grew up doing most of my life by drawing lots of things, I liked the many styles of images from cartoons to realistic or Western styles to anime styles. I've been working with companies including the museum of toys in Indonesia (MOT)"
+      },
+      {
+        "name": "Josh",
+        "role": "Artist",
+        "imgURL": "member/josh.png",
+        "about": "Web3 1/1 Artist pushing the boundaries of digital creativity @@ Visual Storyteller @@ Redefining the NFT ownership experience @@ Pioneering the fusion of Web3 and Gaming"
+      },
+      {
+        "name": "Punisher",
+        "role": "Community Manager",
+        "imgURL": "member/punisher.png",
+        "about": "The friendly face behind the scenes, here to chat, share, and connect with you. @@ Cooking up awesome conversations, memes, and all things community on social media. @@ Your go-to problem solver, answering questions faster than you can say 'NFT.' @@ Making sure your voice is heard, gathering your thoughts and ideas to make magic happen."
+      },
+      {
+        "name": "LJ",
+        "role": "Partnerships & Collabs",
+        "imgURL": "member/LJ.jpg",
+        "about": "Full Time web3 for the last 10 months @@ Communications and Psychology major @@ A born leader @@ Bringning new energy into the crypto space @@ Honest and Genuine @@ Best at solving all types of problems @@ SOL maxi @@ (He's the one who will make you buy any product)"
+      },
+      {
+        "name": "Curto",
+        "role": "Moderator",
+        "imgURL": "member/curto.png",
+        "about": "Worked over 15+ projects @@ Passionate and Dedicated Web3 Enthusiast @@ Hardworking and Driven @@ Empathetic and Approachable @@ He's the one who brings unwavering Web3 guidance, skilled task management, tireless dedication and the light that guides project members (also rumble addict)"
+      },
+      {
+        "name": "Termi",
+        "role": "Moderator ",
+        "imgURL": "member/termi.png",
+        "about": "MMA fighter reconverted in the web3. @@ Fighting is my vision to succeed on the ground and in our ecosystem, which I am a strong supporter of. @@ Nothing will make me move, everything is to accomplish. @@ TLDR: success aint an option."
+      },
+      {
+        "name": "Selenelion",
+        "role": "Lead Sales manager",
+        "imgURL": "member/selly.png",
+        "about": "1.5 year experience in the NFT ecosystem in terms of product selling @@ Founding Father | Absideon Asylum @@ AlphaLead | CetsDAO | Dazed Ducks @@ Partnerships | AssetDash | Flip.gg"
+      },
+      {
+        "name": "Zz7",
+        "role": "Products seller",
+        "imgURL": "member/zz7.png",
+        "about": "Core Team & BD (Sharky.fi, UDAO) @@ Head CM (Froots) @@ Team (SPYRE, 1337, Looties, S33ds, Luna Labs) @@ AH/Member (DeNova Club, 021)"
+      },
+      {
+        "name": "AteBits",
+        "role": "Products seller",
+        "imgURL": "member/Atebits.png",
+        "about": "Operations and Partnerships - Astron @@ 15+ years of growing and leading strategic relationships and operations, Web2."
+      },
+      {
+        "name": "Walker Guffey",
+        "role": "Hello Moon CEO",
+        "imgURL": "member/Walker.png",
+        "about": "7 years of private equity experience @@ Served on multiple boards of directors @@ 2.5 years of investment banking experience"
+      },
+      {
+        "name": "Oiseau",
+        "role": "Backend developer ",
+        "imgURL": "member/oiseau.png",
+        "about": "5+ years at Amazon, honing backend development skills @@ Expertise in protocol creation, enhancing project development @@ Joined Hello Moon team @@ Proficient in Java, Python, C++ @@ Strong problem-solving and collaborative skills"
+      },
+      {
+        "name": "From Meta",
+        "role": "Frontend Developer",
+        "imgURL": "member/fm.png",
+        "about": "Experienced Frontend Developer Shaping User-Centric Experiences @@ Over 4 years of dedicated experience in frontend development. @@ Craftsmanship in creating visually appealing and user-friendly interfaces. @@ (He's the one who's turning your UI into a mind blowing website/platforms)"
+      },
+      {
+        "name": "Bak",
+        "role": "Product Manager",
+        "imgURL": "member/bak.png",
+        "about": "Orchestrating the symphony of ideas, translating vision into feature-rich reality. @@ Master of the roadmap, meticulously shaping the NFT platform's evolution. @@ Analyzing market trends, user feedback, and tech landscapes to steer strategic direction @@ (He's the one who transforms abstract concepts into user-centric experiences that captivate creators and collectors)"
+      }
+    ]
+  },
+  "products": [
+      {
+        "name": "DAB",
+        "desc": "The first Fractionalized Alpha Calling System that allows you to invest into any calls, whatever your portfolio is and get your return on investment. Both the alpha caller and the user are winners !"
+      },
+      {
+        "name": "K-Lock",
+        "desc": "A platform that includes 5 main keys for a healthy community. 25 seconds on -chain Verification, Real time sales bot, Whitelist collector, rarity check, and Data display aggregators."
+      },
+      {
+        "name": "Mikuko AIO",
+        "desc": "An All-In-One software supporting 35 minting and sniping modules (Magic Eden, FFF token market, Cmv3 and much more) as well as a large range of wallet management features."
+      },
+      {
+        "name": "Burnooor",
+        "desc": "We allow project to customise their own burning mechanism. Users can compete for rewards and bragging rights. Use it to mint a new collection, make an art revamp, burn and freeze your NFTs and much more !"
+      },
+      {
+        "name": "Questoor",
+        "desc": "The ultimate organic engagement platform: set your quest (we're supporting discord and twitter API) like RT, Like a tweet, follow an account, write a thread, react to a discord announcement"} , 
+      {
+        "name": "The Shop",
+        "desc": "Ever wondered if our SPLs has real utility? The shop helps in setting your products up and integrating SPL to purchase WL, NFTs and much more with your native project token !"
+      },
+      {
+        "name": "Realm",
+        "desc": " Realm is the first anti-bot raffle whitelist platform that allows founders and CMs to choose who, how, and when is eligible to grab your WL and engage. Omitting all bots through our top-notch algorithm and IP detections "
+      }
+    ]
+}
