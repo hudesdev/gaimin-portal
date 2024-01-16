@@ -17,7 +17,6 @@
 }
 
 body {
-  background-color: #FDEFB4;
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
 
@@ -86,4 +85,12 @@ body {
 
 .wallet-adapter-button-trigger:hover {
   background-color: #60D8D3 !important;
+}
+
+.pink-gradiant {
+  background: linear-gradient(170deg, #D8277C 25.7%, #B71FFF 78.53%);
+}
+
+.pink-gradiant:hover {
+  background: linear-gradient(170deg, #B71FFF 25.7%, #D8277C 78.53%);
 }

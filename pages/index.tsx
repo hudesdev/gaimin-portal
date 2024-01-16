@@ -38,9 +38,9 @@ const Home = () => {
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
       </Head>
-      <div className='w-full flex justify-center items-center h-screen flex-col gap-5 bg-btnYellow/[0.85]'>
-        <img src="../image/background/logoback.png" alt="" className='z-[-1] fixed w-screen h-screen' />
-        <img src="../image/logo.png" alt="" className='w-[250px] h-[250px] z-10' />
+      <div className='w-full flex justify-center items-center h-screen flex-col gap-5'>
+        <img src="../img/Login@3x.png" alt="" className='z-[-1] fixed w-screen h-screen' />
+        <img src="../img/logo.png" alt="" className='w-[500px] h-[00px] z-10' />
         <ThreeCircles
           height="70"
           width="70"

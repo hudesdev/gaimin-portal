@@ -16,31 +16,17 @@ module.exports = {
         '2xl': '6rem',
       },
     },
-    screens: {
-      esm: '350px',
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
-    },
-    fontSize: {
-      sm1: '14px',
-      sm2: '16px',
-      md1: '24px',
-      md2: '32px'
-    },
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+    // screens: {
+    //   esm: '350px',
+    //   sm: '480px',
+    //   md: '768px',
+    //   lg: '976px',
+    //   xl: '1440px',
+    // },
+    extend: { 
       colors: {
-        btnYellow: "#FFDA9C",
-        bgColor: "#FDEFB4",
-        cardBack: "#FBF7EB",
-        btnBlue: "#60D8D3",
-        dark: "#59564D",
+        fontpink: "#D8277C",
+        fontgrey: "#999999",
       }
     },
   },

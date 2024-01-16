@@ -12,12 +12,7 @@ export default function DashboardLayout({
   return (
     <>
       <SimpleBar forceVisible="x" autoHide={true} className="w-full h-screen">
-        <Header />
-        <div className="container">
-          <div className='w-full flex'>
-            {children}
-          </div>
-        </div>
+        {children}
       </SimpleBar>
     </>
   )

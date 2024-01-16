@@ -1,0 +1,11 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon/Outline/heart">
+<path id="Icon" d="M3.59835 5.26502C2.13388 6.72948 2.13388 9.10385 3.59835 10.5683L10 16.97L16.4017 10.5683C17.8661 9.10385 17.8661 6.72948 16.4016 5.26502C14.9372 3.80055 12.5628 3.80055 11.0983 5.26502L10 6.36341L8.90165 5.26502C7.43718 3.80055 5.06282 3.80055 3.59835 5.26502Z" stroke="url(#paint0_linear_29_531)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_29_531" x1="10" y1="6.88738" x2="11.2201" y2="14.6989" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D8277C"/>
+<stop offset="1" stop-color="#B71FFF"/>
+</linearGradient>
+</defs>
+</svg>
