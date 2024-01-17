@@ -1,19 +1,21 @@
 /** @type {import('tailwindcss').Config} */
+import {nextui} from "@nextui-org/react";
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/*.{js,ts,jsx,tsx,mdx}',
     './components/*.{js,ts,jsx,tsx,mdx}',
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     container: {
       center: true,
       padding: {
         DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+        sm: '1rem',
+        lg: '2rem',
+        xl: '3rem',
       },
     },
     // screens: {
@@ -30,5 +32,6 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  darkMode: "class",
+  plugins: [nextui()],
 }
