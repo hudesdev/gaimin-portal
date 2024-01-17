@@ -29,9 +29,9 @@ function CalendarDays(props) {
       {
         currentDays.map((day) => {
           return (
-            <div className= {`calendar-day ${day.selected ? " selected" : ""} ${day.currentMonth ? `border-[1px]`:``} ${day.number>=3&&day.number<10? `border-[#D8277C]/[0.3]`:day.number>=10&&day.number<16 ?`border-[#FEDA03]/[0.3]` :day.number>=16&&day.number<24?`border-[#03FE3A]/[0.3]`:day.number>=24&&day.number<31?`border-[#55EDED]/[0.3]`: `border-[#9432E7]/[0.3]`}  `}
+            <div className= {`calendar-day ${day.selected ? " selected" : ""} ${day.currentMonth ? `border-[1px]`:``} ${day.number>=3&&day.number<10? `border-[#D8277C]/[0.3]`:day.number>=10&&day.number<16 ?`border-[#FEDA03]/[0.3]` :day.number>=16&&day.number<24?`border-[#03FE3A]/[0.3]`:day.number>=24&&day.number<31?`border-[#55EDED]/[0.3]`: `border-[#9432E7]/[0.3]`} group cursor-pointer`}
                   onClick={() => props.changeCurrentDay(day)}>  
-              <p className={`font-12 ${day.currentMonth ? day.number < 3 ? " current_blue" :day.number>=3&&day.number<10?` current_pink`: day.number>=10&&day.number<16 ? ` current_yellow`:day.number>=16&&day.number<24?` current_green`: day.number>=24&&day.number<31?"current_sky": "current_pink" :`current_grey`} ${day.selected ? " selected" : ""} hover:text-white`}>{day.number}</p>
+              <p className={`text-xs ${day.currentMonth ? day.number < 3 ? "text-[#9432E7]" :day.number>=3&&day.number<10?` text-[#D8277C]`: day.number>=10&&day.number<16 ? ` text-[#FEDA03]`:day.number>=16&&day.number<24?` text-[#03FE3A]`: day.number>=24&&day.number<31?"text-[#55EDED]": "text-[#9432E7]" :`text-[#999]`} ${day.selected ? " selected" : ""} group-hover:text-white`}>{day.number}</p>
             </div>
           )
         })
@@ -39,5 +39,4 @@ function CalendarDays(props) {
     </div>
   )
 }
-// (day.currentMonth ? " current_pink" : "") + {"calendar-day" + (day.selected ? " selected" : "") + "border_style "}
 export default CalendarDays;
