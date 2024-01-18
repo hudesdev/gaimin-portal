@@ -10,7 +10,7 @@ const meta = {
   image: "../main.jpg",
   type: "website",
 };
-
+ 
 
 const Home = () => {
   const router = useRouter();

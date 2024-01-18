@@ -16,6 +16,7 @@ module.exports = {
         sm: '1rem',
         lg: '2rem',
         xl: '3rem',
+        '2xl': '6rem',
       },
     },
     // screens: {

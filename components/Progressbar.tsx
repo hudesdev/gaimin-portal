@@ -1,13 +1,14 @@
 type ProgressBarProps = {
-    valuePercentage: number;
-  };
-  
-  const ProgressBar = (props: ProgressBarProps) => {
-    return (
-      <div className="h-[164px] w-[8px] bg-[#aaa]/[0.15] rounded-full relative">
-        <div className={`w-full pink-gradiant rounded-full absolute bottom-0`} style={{ height: `${props.valuePercentage}%` }}></div>
-      </div>
-    );
-  };
+  valuePercentage: number;
+  vertical: boolean;
+};
 
-  export default ProgressBar
+const ProgressBar = (props: ProgressBarProps) => {
+  return (
+    <div className={`${props.vertical?`h-[164px] w-[8px]`:`w-4/5 h-[8px]`}   bg-[#aaa]/[0.15] rounded-full relative`}>
+      <div className={`pink-gradiant rounded-full absolute bottom-0`} style={{ height: `${props.vertical? props.valuePercentage: 100}%`, width: `${ !props.vertical? props.valuePercentage: 100 }%` }}></div>
+    </div>
+  );
+};    
+
+export default ProgressBar
