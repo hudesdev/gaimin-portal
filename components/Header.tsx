@@ -23,7 +23,7 @@ interface ReferralType {
 
 export default function Header() {
   const [isOpen, setOpen] = useState(false);
-  const [copied, setCopy] = useState<boolean>(false);
+  const [copied, setCopy] = useState<boolean>(false); 
   const [showList, setShowList] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const [open, handleOpen] = useState<boolean>(false);

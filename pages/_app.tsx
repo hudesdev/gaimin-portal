@@ -9,17 +9,15 @@ import {
   CoinbaseWalletAdapter,
   PhantomWalletAdapter,
   SolflareWalletAdapter,
-  TorusWalletAdapter,
+  TorusWalletAdapter, 
   TrustWalletAdapter,
+  
 } from "@solana/wallet-adapter-wallets";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import "@solana/wallet-adapter-react-ui/styles.css";
 import '../styles/globals.css';
 import "@solana/wallet-adapter-react-ui/styles.css";
 
-
-import Header from "../components/Header";
-import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 import { SessionProvider } from "next-auth/react";
 import '../styles/globals.css';

@@ -19,13 +19,14 @@ module.exports = {
         '2xl': '6rem',
       },
     },
-    // screens: {
-    //   esm: '350px',
-    //   sm: '480px',
-    //   md: '768px',
-    //   lg: '976px',
-    //   xl: '1440px',
-    // },
+    screens: {
+      esm: '350px',
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+      '2xmd': '930px'
+    },
     extend: { 
       colors: {
         fontpink: "#D8277C",
