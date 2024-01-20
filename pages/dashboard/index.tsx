@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
 import { useWallet } from "@solana/wallet-adapter-react";
-import Layout from './layout';
+import Layout from '../layout';
 import { FaWallet, FaTwitter } from 'react-icons/fa6';
 
 // Import Swiper styles

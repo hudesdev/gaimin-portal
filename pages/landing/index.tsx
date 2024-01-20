@@ -4,8 +4,8 @@ import { FaChevronLeft, FaCopy } from 'react-icons/fa';
 import Link from "next/link";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useSession } from "next-auth/react";
-import DashboardLayout from '../dashboard/layout';
-import { FaTwitter, FaGripLines, FaX } from 'react-icons/fa6';
+import DashboardLayout from '../layout';
+import { FaTwitter, FaGripLines, FaX, FaAddressBook, FaArrowRightFromBracket } from 'react-icons/fa6';
 import Head from 'next/head';
 import ProgressBar from '../../components/Progressbar';
 import { Tooltip } from 'react-tooltip'
@@ -17,14 +17,16 @@ import Cal from '../../components/modals/Cal';
 import WalletConnect from '../../components/modals/WalletConnect';
 import ReferToFriend from '../../components/modals/ReferToFriend';
 import ModalContainer from '../../components/ModalContainer';
+import CountDown from '../../components/CountDown'
 
 const Home = () => {
-  const [state, setState] = useState(45);
+  const [state, setState] = useState(80);
   const [drop, dropOpen] = useState(false);
   const [playModal, setPlayOpen] = useState(false);
   const [calModal, setCalOpen] = useState(false);
   const [referModal, setReferOpen] = useState(false);
   const [walletModal, setWalletOpen] = useState(false);
+  const [wallethandle, openWalletHandle] = useState(false);
   const [users, setUsers] = useState([
     {
       url: '../img/person1.jpg',
@@ -92,6 +94,28 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <div className={`absolute w-full bg-[#050209]/[0.97] top-0 z-30 h-[1000px] sm:h-full ${wallethandle ? 'flex': 'hidden'} justify-end items-start pt-0`}>
+            <div className='flex flex-col items-center justify-center gap-3 py-[24px] modal_style m-[30px] relative'>
+              <button className='flex w-[32px] p-[8px] rounded-[12px] flex justify-center items-center bg-[#050209]/[0.97] text-white text-sm absolute right-2 top-2' onClick={() => openWalletHandle(false)}><FaX className='w-[16px] h-[16px]'/></button>
+              <div className='w-full flex justify-center'>
+                <Avatar src="../img/person1.jpg" className='w-[72px] h-[72px]'/>
+              </div>
+              <div className='flex flex-col w-full justify-center items-center'>
+                <p className='text-white text-lg'>0x7sad...98dkb</p>
+                <p className='text-fontgrey text-sm m-0'>42.069 SOL</p>
+              </div>
+              <div className='flex w-full gap-2'>
+                <div className='flex flex-col justify-center items-center h-[54px] w-[102px] text-white text-xs rounded-[8px] bg-white/[0.1]'>
+                  <FaAddressBook/>
+                  Switch
+                </div>
+                <div className='flex flex-col justify-center items-center h-[54px] w-[102px] text-white text-xs rounded-[8px] bg-white/[0.1]'>
+                  <FaArrowRightFromBracket/>
+                  Disconnect
+                </div>
+              </div>
+            </div>
+          </div>
           <ModalContainer title="How to Play" setOpen={setPlayOpen} open={playModal} children = {<PlayModal/>} />
           <ModalContainer title="$GMRX Points Calculator" setOpen={setCalOpen} open={calModal} children = {<Cal/>} />
           <ModalContainer title="Refer to Friend" setOpen={setReferOpen} open={referModal} children = {<ReferToFriend open = {referModal} />} />
@@ -99,20 +123,21 @@ const Home = () => {
           <div className='w-full flex flex-col px-2 sm:px-6'>
             <header className='w-full flex justify-between items-center py-[24px]'>
               <img src="../img/logo.png" alt="" className='w-[120px]' />
-              <button className='flex 2xmd:hidden w-[32px] h-[32px] rounded-[12px] flex justify-center items-center bg-[#fff]/[0.04] text-white' onClick={() => dropOpen(!drop)}>{!drop?<FaGripLines className='w-[16px] h-[16px]' />:<FaX className='w-[16px] h-[16px]'/>}</button>
-              <div className='w-4/5 lg:w-2/3 hidden 2xmd:flex justify-between'>
-                <div className='flex gap-5 lg:gap-8 text-sm'>
+              <button className='flex lg:hidden w-[32px] h-[32px] rounded-[12px] flex justify-center items-center bg-[#fff]/[0.04] text-white' onClick={() => dropOpen(!drop)}>{!drop?<FaGripLines className='w-[16px] h-[16px]' />:<FaX className='w-[16px] h-[16px]'/>}</button>
+              <div className='w-2/3 hidden lg:flex justify-between gap-2'>
+                <div className='flex gap-3 lg:gap-5 text-sm'>
                   <button className='text-white'>Power Posts</button>
                   <button className='text-white' onClick={() => setPlayOpen(!playModal)}>How To Play</button>
                   <button className='text-white' onClick={() => setCalOpen(!calModal)}>Calculate Points</button>
                   <button className='text-white' onClick={() => setReferOpen(!referModal)}>Refer to Friends</button>
+                  <button className='text-white' onClick={() => setReferOpen(!referModal)}>Telegram</button>
                 </div>
                 
                 <div className='flex gap-3'>
                   {/* <WalletMultiButton className="wallet-custom" /> */}
 
                   <button className='px-[16px] flex items-center py-[6px] rounded-full bg-[#1DA1F2] hover:bg-[#1DA1F2]/[0.8] text-white text-sm gap-2' ><FaTwitter/> Connect</button>
-                  <div className='flex gap-3 cursor-pointer'  onClick={() => setWalletOpen(!walletModal)}>
+                  <div className='flex gap-3 cursor-pointer'  onClick={() => openWalletHandle(!wallethandle)}>
                     <Avatar src="../img/person1.jpg" className='w-[32px] h-[32px]'/>
                     <div className='flex flex-col justify-center'>
                       <p className='text-white text-xs'>Hanson Rise</p>
@@ -124,18 +149,23 @@ const Home = () => {
               
             </header>
             <main className='w-full flex flex-col 2xmd:flex-row justify-between items-start py-[24px] relative'>
-              <div className='relative 2xmd:absolute w-full h-full flex justify-center items-center pb-[24px]'>
-                <div className='w-full 2xmd:w-1/4 lg:w-1/3 h-full flex flex-col justify-around items-center'>
+              <div className='relative  md:h-[780px] 2xmd:absolute w-full h-full flex justify-center items-center z-[-1]'>
+                <div className='w-full h-full 2xmd:w-1/4 lg:w-1/3 flex flex-col justify-between items-center pb-[48px] gap-24 2xmd:gap-0'>
                   <div className='flex flex-col'>
                     <p className='text-white text-2xl lg:text-[32px] font-semibold text-center'>Welcome to Gaimin Earn</p>
                     <p className='text-fontgrey text-xs text-center'>Collect the point by liking, replying and Re-tweeting</p>
                   </div>
-
-                  <img src={`/img/gif/${state<=1?`broken.gif`:state<=10?'discharged.gif':state<=48?'happy.gif':`strong.gif`}`} className='w-full sm:w-2/3 2xmd:w-full'  alt="" />
-
-                  <div className='flex flex-col justify-center items-center gap-3 py-[16px] px-[32px] 2xmd:px-[24px] lg:p-[32px] rounded-[16px] bg-white/[0.04]'>
-                    <p className='text-2xl 2xmd:text-3xl lg:text-5xl text-white'>Stage 2</p>
-                    <div className='px-[16px] py-[4px] text-fontpink text-sm sm:text-lg rounded-full bg-[#D8277C]/[0.04]'>10 pts</div>
+                  <div className='flex flex-col items-center'>
+                    <div className='relative w-2/3 2xmd:w-full'>
+                      <img src="/img/star_bg.png" alt="" />
+                      <div className='w-full flex items-center justify-center absolute top-[-80px]'>
+                        <img src={`/img/gif/${state<=1?`broken.gif`:state<=10?'discharged.gif':state<=48?'happy.gif':`strong.gif`}`} className='w-full sm:w-5/6 '  alt="" />
+                      </div>
+                    </div>
+                    <div className='flex flex-col justify-center items-center gap-3 py-[16px] px-[32px] 2xmd:px-[24px] lg:p-[32px] rounded-[16px] bg-white/[0.04]'>
+                      <p className='text-2xl 2xmd:text-3xl lg:text-5xl text-white'>Stage {state}</p>
+                      <div className='px-[16px] py-[4px] text-fontpink text-sm sm:text-lg rounded-full bg-[#D8277C]/[0.04]'>10 pts</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -174,7 +204,7 @@ const Home = () => {
                   </div>
                   <div className='w-full rounded-[16px] bg-[#fff]/[0.04] px-[8px] 2xmd:px-[32px] py-[24px] flex flex-col items-center'>
                     <p className='text-fontgrey text-[10px] 2xmd:text-xs'> SEASON BEGIN IN</p>
-                    <p className='text-fontpink text-base 2xmd:text-xl'>02 : 23 : 42 : 01</p>
+                    <CountDown nextTime = {new Date('2024-1-25')} />
                   </div>
                 </div>
                 <div className='w-1/2 2xmd:w-full flex flex-col gap-3'>

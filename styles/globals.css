@@ -16,8 +16,15 @@
   }
 }
 
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../public/font/FontsFree-Net-Satoshi-Variable.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {  
-  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  font-family: Satoshi, Geneva, Tahoma, sans-serif !important;
 }
 
 .swiper-button-next::after {

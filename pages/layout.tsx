@@ -1,6 +1,3 @@
-import { useState, useMemo, useEffect } from "react";
-
-import Header from "../../components/Header";
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 

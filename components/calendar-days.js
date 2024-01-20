@@ -23,14 +23,13 @@ function CalendarDays(props) {
 
     currentDays.push(calendarDay);
   }
-
   return (
     <div className="table-content">
       {
         currentDays.map((day, index) => {
           return (
             <div className= {`calendar-day ${day.selected ? " selected" : ""} ${day.currentMonth ? `border-[1px]`:``} ${day.number>=3&&day.number<10? `border-[#D8277C]/[0.3]`:day.number>=10&&day.number<16 ?`border-[#FEDA03]/[0.3]` :day.number>=16&&day.number<24?`border-[#03FE3A]/[0.3]`:day.number>=24&&day.number<31?`border-[#55EDED]/[0.3]`: `border-[#9432E7]/[0.3]`} group cursor-pointer`}
-                  onClick={() => props.changeCurrentDay(day)} key={day.number+index}>  
+                  onClick={() => props.changeCurrentDay(day)} key={index} >  
               <p className={`text-xs ${day.currentMonth ? day.number < 3 ? "text-[#9432E7]" :day.number>=3&&day.number<10?` text-[#D8277C]`: day.number>=10&&day.number<16 ? ` text-[#FEDA03]`:day.number>=16&&day.number<24?` text-[#03FE3A]`: day.number>=24&&day.number<31?"text-[#55EDED]": "text-[#9432E7]" :`text-[#999]`} ${day.selected ? " selected" : ""} group-hover:text-white`}>{day.number}</p>
             </div>
           )

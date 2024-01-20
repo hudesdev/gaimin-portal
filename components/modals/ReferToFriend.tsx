@@ -25,7 +25,7 @@ const ReferToFriend = (props: {open:boolean}) => {
     }, [props.open])
     return <div className='w-full flex flex-col text-fontgrey text-sm gap-4'>
         <p className="text-fontgrey text-sm">Invite to sign up using you link and you’ll get 1% of their earnings -awarded in $GMRX. Get up to 100 $GMRX!!!</p>
-        <div className="px-[16px] py-[8px] bg-[#050209]/[0.97] rounded-full w-full flex items-center">
+        <div className="px-[16px] py-[8px] bg-[#050209]/[0.97] rounded-full w-full flex items-center justify-between">
             <p className="truncate ">gaimin.io/invite-8sadvhduys-/dsa97js8751-m0ZM=099yb18er8t9ds9f8sd8fs7dycyccc7sdfsde</p>
             <button className="px-[16px] py-[8px] rounded-full text-white text-sm flex items-center gap-2 bg-[#fff]/[0.04]" onClick={() => copyText()}><FaCopy/> {!copied ? "Copy" : "Copied"}</button> 
         </div>

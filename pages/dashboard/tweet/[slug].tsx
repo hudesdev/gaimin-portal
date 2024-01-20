@@ -9,7 +9,7 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { toast } from "react-toastify";
 import moment from 'moment-timezone';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import DashboardLayout from '../layout';
+import DashboardLayout from '../../layout';
 import Head from "next/head";
 
 const itemList = [
