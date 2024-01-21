@@ -1,46 +1,57 @@
 
 import NextAuth from "next-auth";
-import TwitterProvider from "next-auth/providers/twitter";
+import Providers from "next-auth/providers";
 import { Types } from 'mongoose';
 import dbConnect from '../../../util/dbConnect';
-import Users from "../../../models/users";
+import Users from "../../../models/gaimin-users";
+import Seasons from "../../../models/gaimin-seasons";
+import SeasonUsers from "../../../models/gaimin-seasonusers";
 import { getToken } from 'next-auth/jwt';
 
 export default NextAuth({
 
     providers: [
-        TwitterProvider({
-
-            clientId: process.env.TWITTER_CLIENT_ID,
-            clientSecret: process.env.TWITTER_CLIENT_SECRET,
-            version: "2.0",
-            authorization: {
-                url: "https://twitter.com/i/oauth2/authorize",
-                params: {
-                    scope: "tweet.write tweet.read offline.access users.read",
-                },
-            },
-        })
+        Providers.Twitter({
+            clientId: process.env.TWITTER_CONSUMER_KEY,
+            clientSecret: process.env.TWITTER_CONSUMER_SECRET,
+        }),
     ],
 
     callbacks: {
-        async signIn(user) {
-            console.log("!!!",user)
+        async signIn(user, account, profile) {
             if (user) {
                 try {
                     await dbConnect();
-                    const check = await Users.findOne({ twitterId: user.profile.data.id })
+                    const check = await Users.findOne({ twitterId: user.id });
+                    const wagerValue = profile.followers_count > 500 ? 30 : 1;
                     if (!check) {
                         const users = new Users({
-                            alias: user.profile.data.name,
-                            name: user.profile.data.username,
+                            alias: profile.screen_name,
+                            name: profile.name,
                             walletAddress: "",
-                            twitterId: user.profile.data.id,
-                            imgSRC: user.profile.data.profile_image_url,
-                            email: user.user.email,
-                            currentPoint: 0
+                            twitterId: user.id,
+                            imgSRC: profile.profile_image_url_https,
+                            email: profile.email,
+                            followers: profile.followers_count,
+                            accountCreated: profile.created_at,
+                            wager: wagerValue
                         });
                         await users.save();
+
+                        const seasonId = await Seasons.findOne({ endflag: 0 }).select('_id');
+                        const seasonuUser = new SeasonUsers({
+                            twitterId: user.id,
+                            seasonId: Types.ObjectId(seasonId._id),
+                            wager: wagerValue
+                        });
+
+                        await seasonuUser.save();
+                    } else {
+                        const updatedUser = await Users.updateOne(
+                            { twitterId: user.id },
+                            { $set: { imgSRC: profile.profile_image_url_https, wager: wagerValue } },
+                            { new: true }
+                        );
                     }
                 } catch (error) {
                     console.log("error==========================", error);
@@ -48,36 +59,36 @@ export default NextAuth({
                 }
             }
             return true
-
         },
-        async session(session) {
-           
+        async session(session, user) {
+            user.image = user.picture;
+            user.email = user.id;
+            session.user = user;
             await dbConnect();
-            const check = await Users.findOne({ twitterId: session.id })
+            const check = await Users.findOne({ twitterId: user.id })
             if (check) {
-                session.walletAddress = check.walletAddress
+                session.walletAddress = check.walletAddress;
+                session.wager = check.wager;
+                session.accountCreated = check.accountCreated;
             }
             return session;
         },
-        async jwt({ token, user, account, profile, isNewUser, trigger }) {
-            
+        async jwt(token, user, account, profile, isNewUsers) {
+
             await dbConnect();
-            if (account) {
-                token.account = account;
-            }
             if (user) {
+                token.id = user.id
 
                 const check = await Users.findOne({ twitterId: user.id })
 
                 if (check) {
-                    user.walletAddress = check.walletAddress
+                    token.walletAddress = check.walletAddress
                 }
-                token.user = user;
             }
-            if (profile) {
+            if (account) {
+                token.twitter = account;
+            }
 
-                token.profile = profile;
-            }
             return token
         }
 

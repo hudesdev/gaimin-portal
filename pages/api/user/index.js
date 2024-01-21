@@ -1,13 +1,15 @@
 import { Types } from 'mongoose';
 import dbConnect from '../../../util/dbConnect';
-import Users from "../../../models/users";
+import Users from '../../../models/gaimin-users';
+import SeasonUsers from '../../../models/gaimin-seasonusers';
+import Powers from '../../../models/gaimin-power';
+import Seasons from '../../../models/gaimin-seasons';
 import { getToken } from 'next-auth/jwt';
 
 export default async function handler(
     req,
     res
 ) {
-
     const {
         body,
         method,
@@ -22,14 +24,169 @@ export default async function handler(
     switch (method) {
         case 'GET' /* Get a model by its ID */:
             try {
-                const check = await Users.findOne({ twitterId: token.user.id })
+
+                const check = await Users.findOne({ twitterId: token.id });
+                console.log("check", token.id);
+
                 if (!check) {
-                    return res.status(400).json({ message: "There is no data related with this address!" });
+                    return res.status(400).json({ message: "There is no data related with this id!" });
                 }
-                console.log(check);
+                console.log("check", check);
+
+                // const powerList = await Seasons.aggregate([
+
+                //     {
+                //         $lookup: {
+                //             from: 'powers',
+                //             localField: '_id',
+                //             foreignField: 'seasonId',
+                //             as: 'season_as_powers'
+                //         }
+                //     },
+                //     {
+                //         $lookup: {
+                //             from: 'seasonusers',
+                //             localField: '_id',
+                //             foreignField: 'seasonId',
+                //             as: 'season_users'
+                //         }
+                //     },
+                //     {
+                //         $addFields: {
+                //             season_as_powers: {
+                //                 $filter: {
+                //                     input: '$season_as_powers',
+                //                     as: 'power',
+                //                     cond: {
+                //                         $eq: ['$$power.endflag', 0] // Adjust this condition as needed
+                //                     }
+                //                 }
+                //             },
+                //             // season_users: {
+                //             //     $filter: {
+                //             //         input: '$season_users',
+                //             //         as: 'users',
+                //             //         cond: {
+                //             //             $eq: ['$$users.endflag', 0], // Adjust this condition as needed
+                //             //             $eq: ['$$users.twitterId', check.twitterId], // Adjust this condition as needed
+                //             //         }
+                //             //     }
+                //             // }
+
+                //             season_users: {
+                //                 $map: {
+                //                     input: {
+                //                         $filter: {
+                //                             input: "$filter_user",
+                //                             as: "fusers",
+                //                             $eq: ['$$fusers.endflag', 0], // Adjust this condition as needed
+                //                             $eq: ['$$fusers.twitterId', check.twitterId], // Adjust this condition as needed
+                //                         }
+                //                     },
+                //                     as: '$season_users',
+                //                     in: {
+                //                         $mergeObjects: [
+                //                             '$$season_users',
+                //                             {
+                //                                 totalPoint: {
+                //                                     $multiply: [
+                //                                         { $add: ['$$season_users.p_repostPoint', '$$season_users.p_repliesPoint', '$$season_users.p_likePoint', '$$season_users.p_quotePoint'] }, // a * b
+                //                                         '$$season_users.wager' // + c
+                //                                     ]
+                //                                 }
+                //                             }
+                //                         ],
+
+                //                     },
+
+                //                 }
+                //             }
+                //         }
+                //     },
+                //     {
+                //         $match: {
+                //             'endflag': 0,
+                //         }
+                //     },
+                // ])
+
+                const powerList = await Seasons.aggregate([
+                    {
+                      $lookup: {
+                        from: 'powers',
+                        localField: '_id',
+                        foreignField: 'seasonId',
+                        as: 'season_as_powers'
+                      }
+                    },
+                    {
+                      $lookup: {
+                        from: 'seasonusers',
+                        localField: '_id',
+                        foreignField: 'seasonId',
+                        as: 'season_users'
+                      }
+                    },
+                    {
+                      $addFields: {
+                        season_as_powers: {
+                          $filter: {
+                            input: '$season_as_powers',
+                            as: 'power',
+                            cond: { $eq: ['$$power.endflag', 0] }
+                          }
+                        },
+                        season_users: {
+                          $map: {
+                            input: {
+                              $filter: {
+                                input: "$season_users",
+                                as: "fusers",
+                                cond: {
+                                  $and: [
+                                    { $eq: ['$$fusers.endflag', 0] },
+                                    { $eq: ['$$fusers.twitterId', check.twitterId] }
+                                  ]
+                                }
+                              }
+                            },
+                            as: 'filteredUser',
+                            in: {
+                              $mergeObjects: [
+                                '$$filteredUser',
+                                {
+                                  totalPoint: {
+                                    $multiply: [
+                                      {
+                                        $add: [
+                                          '$$filteredUser.p_repostPoint',
+                                          '$$filteredUser.p_repliesPoint',
+                                          '$$filteredUser.p_likePoint',
+                                          '$$filteredUser.p_quotePoint'
+                                        ]
+                                      },
+                                      '$$filteredUser.wager'
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      $match: {
+                        'endflag': 0,
+                      }
+                    }
+                  ]);
+
+                console.log("powerList====>>>", powerList[0].season_users);
                 await res.status(200).json(check);
             } catch (error) {
-                 res.status(400).json({ success: false })
+                console.log("error=====>>>>>>", error);
+                res.status(400).json({ success: false })
             }
             break
 
@@ -71,18 +228,6 @@ export default async function handler(
                 } else {
                     res.status(400).send({ success: false });
                 }
-            } catch (error) {
-                res.status(400).json({ success: false })
-            }
-            break
-
-        case 'DELETE' /* Delete a model by its ID */:
-            try {
-                const deletedUser = await Users.deleteOne({ _id: body.id })
-                if (!deletedUser) {
-                    return res.status(400).json({ success: false })
-                }
-                res.status(200).json({ success: true })
             } catch (error) {
                 res.status(400).json({ success: false })
             }

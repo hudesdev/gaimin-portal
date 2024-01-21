@@ -32,7 +32,7 @@
     "moment-timezone": "^0.5.43",
     "mongoose": "^8.0.2",
     "next": "13.5.6",
-    "next-auth": "^4.24.5",
+    "next-auth": "^3.27.3",
     "next-query": "^1.9.0",
     "oauth-1.0a": "^2.2.6",
     "path": "^0.12.7",

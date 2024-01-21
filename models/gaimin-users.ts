@@ -7,10 +7,12 @@ export interface Users extends mongoose.Document {
     walletAddress: string,
     twitterId: string,
     imgSRC: string,
+    wager: number,
+    currentPoint: number,
     followers: number,
     accountCreated: Date,
     shardAmount: number,
-    delflag: boolean,
+    delflag: number,
     createdAt: Date,
     updatedAt: Date
 }
@@ -36,13 +38,26 @@ const UserSchema = new mongoose.Schema<Users>({
     },
     followers: {
         type: Number,
+        default: 0
     },
     shardAmount: {
         type: Number,
+        default: 0
+    },
+    accountCreated: {
+        type: Date
+    },
+    wager: {
+        type: Number,
+        default: 1
     },
     delflag: {
-        type: Boolean,
-        default: false
+        type: Number,
+        default: 0
+    },
+    currentPoint: {
+        type: Number,
+        default: 0
     },
     createdAt: {
         type: Date,
@@ -53,7 +68,6 @@ const UserSchema = new mongoose.Schema<Users>({
         default: Date.now
     }
 })
-
 
 let Users;
 if (mongoose.models.Users) {

@@ -5,21 +5,16 @@ export interface SeasonUsers extends mongoose.Document {
     twitterId: string,
     seasonId: string,
     userLevel: number,
-    pointAmount: number,
-    shardAmount: number,
     p_likePoint: number,
     p_repostPoint: number,
     p_repliesPoint: number,
     p_quotePoint: number,
-    t_viewPoint: number,
-    t_likePoint: number,
-    t_repliesPoint: number,
-    t_repostPoint: number,
-    t_quotePoint: number,
-    t_ids: string[],
-    p_ids: string[],
+    p_repost_ids: string[],
+    p_replies_ids: string[],
+    p_like_ids: string[],
+    p_quote_ids: string[],
     wager: number,
-    endflag: boolean,
+    endflag: number,
     createdAt: Date,
     updatedAt: Date
 }
@@ -38,14 +33,6 @@ const SeasonUserSchema = new mongoose.Schema<SeasonUsers>({
         type: Number,
         default: 1
     },
-    pointAmount: {
-        type: Number,
-        default: 0
-    },
-    shardAmount: {
-        type: Number,
-        default: 0
-    },
     p_likePoint: {
         type: Number,
         default: 0
@@ -62,31 +49,19 @@ const SeasonUserSchema = new mongoose.Schema<SeasonUsers>({
         type: Number,
         default: 0
     },
-    t_viewPoint: {
-        type: Number,
-        default: 0
-    },
-    t_likePoint: {
-        type: Number,
-        default: 0
-    },
-    t_repliesPoint: {
-        type: Number,
-        default: 0
-    },
-    t_repostPoint: {
-        type: Number,
-        default: 0
-    },
-    t_quotePoint: {
-        type: Number,
-        default: 0
-    },
-    t_ids: {
+    p_repost_ids: {
         type: [String],
         default: [],
     },
-    p_ids: {
+    p_replies_ids: {
+        type: [String],
+        default: [],
+    },
+    p_like_ids: {
+        type: [String],
+        default: [],
+    },
+    p_quote_ids: {
         type: [String],
         default: [],
     },
@@ -95,8 +70,8 @@ const SeasonUserSchema = new mongoose.Schema<SeasonUsers>({
         default: 1
     },
     endflag: {
-        type: Boolean,
-        default: false
+        type: Number,
+        default: 0
     },
     createdAt: {
         type: Date,

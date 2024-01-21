@@ -1,10 +1,11 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose';
 
 export interface Powers extends mongoose.Document {
     tweetId: string,
+    tweetTitle: string,
     tweetURI: string,
-    seasonId: string,
-    endflag: boolean,
+    seasonId: Schema.Types.ObjectId,
+    endflag: number,
     createdAt: Date,
     updatedAt: Date
 }
@@ -13,15 +14,18 @@ const PowerSchema = new mongoose.Schema<Powers>({
     tweetId: {
         type: String
     },
+    tweetTitle: {
+        type: String
+    },
     tweetURI: {
         type: String
     },
     seasonId: {
-        type: String
+        type: Schema.Types.ObjectId
     },
     endflag: {
-        type: Boolean,
-        default: false
+        type: Number,
+        default: 0
     },
     createdAt: {
         type: Date,

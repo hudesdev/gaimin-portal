@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 export interface Seasons extends mongoose.Document {
     startTime: Date,
     endTime: Date,
-    endflag: boolean,
+    endflag: number,
     createdAt: Date,
     updatedAt: Date
 }
@@ -16,8 +16,8 @@ const SeasonSchema = new mongoose.Schema<Seasons>({
         type: Date
     },
     endflag: {
-        type: Boolean,
-        default: false
+        type: Number,
+        default: 0
     },
     createdAt: {
         type: Date,
@@ -28,7 +28,6 @@ const SeasonSchema = new mongoose.Schema<Seasons>({
         default: Date.now
     }
 })
-
 
 let Seasons;
 if (mongoose.models.Seasons) {

@@ -20,10 +20,13 @@ import "@solana/wallet-adapter-react-ui/styles.css";
 
 
 import 'simplebar-react/dist/simplebar.min.css';
-import { SessionProvider } from "next-auth/react";
+import { useSession } from "next-auth/client";
+import SessionContext from "../context/SessionContext";
+import { SessionProvider } from "next-auth/client";
+
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps: { session, ...pageProps }}: AppProps) {
+function MyApp({ Component, pageProps: { ...pageProps }}: AppProps) {
   const network = WalletAdapterNetwork.Mainnet;
   const wallets = useMemo(
     () => [
@@ -37,13 +40,14 @@ function MyApp({ Component, pageProps: { session, ...pageProps }}: AppProps) {
   );
 
   const [isClient, setIsClient] = useState(false);
+  const [session] = useSession();
 
   useEffect(() => {
     setIsClient(true)
   }, []);
 
   return (
-    <SessionProvider session={session}>
+    <SessionContext.Provider value={{ session }}>
       <ConnectionProvider endpoint={process.env.RPC_HOST || 'https://api.mainnet-beta.solana.com'}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
@@ -51,7 +55,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }}: AppProps) {
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
-    </SessionProvider>
+      </SessionContext.Provider>
 
   )
 }
