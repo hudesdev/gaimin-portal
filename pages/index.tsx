@@ -1,29 +1,49 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useWallet } from '@solana/wallet-adapter-react';
 import { ThreeCircles } from 'react-loader-spinner';
 import Head from "next/head";
-import Layout from './layout';
+import Layout from './layout';  
 import { FaWallet, FaTwitter } from 'react-icons/fa6';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 const meta = {
-  title: 'ELEMENTALS-T2E',
-  description: 'The vision of the project is to allow users to earn $ELMNT token by tweeting once per day for the public and twice for token holders.',
-  icons: "../favicon.ico",
+  title: 'Gaimin',
+  description: 'The vision of the project is to allow users to earn $GMRX.',
+  icons: "/img/GAIMIN_G_Logo_White.jpg",
   image: "../main.jpg",
   type: "website",
 };
  
 const Home = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [time, setTime] = useState(false);
+  const wallet = useWallet();
   useEffect(() => {
+    console.log("useparam", searchParams);
+    
     setTimeout(() => { setTime(true) }, 3000);
+    
   }, []);
+
+  const login = async () => {
+    if (searchParams) {
+      const referURL = JSON.stringify(searchParams.get("applate"));
+
+      const referral = await fetch("/api/referral", {
+        method: "POST",
+        body: referURL
+      })
+        .then((response) => {
+          localStorage.removeItem('referURL');
+        })
+        .catch(err => { console.log(err); })
+    }
+  }
   return (
     <>
       <Head>
@@ -31,26 +51,26 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://tweet2earn.xyz`} />
-        <link rel="canonical" href={`https://tweet2earn.xyz`} />
+        {/* <meta property="og:url" content={`https://tweet2earn.xyz`} />
+        <link rel="canonical" href={`https://tweet2earn.xyz`} /> */}
         <link rel="icon" href={meta.icons} sizes="any" />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Elementals-T2E" />
+        <meta property="og:site_name" content="Gaimin" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={meta.image} />
+        {/* <meta property="og:image" content={meta.image} /> */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@Elementals_NFT_" />
+        <meta name="twitter:site" content="Gaimin" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
+        {/* <meta name="twitter:image" content={meta.image} /> */}
       </Head>
       { !time ? <div className='w-full flex justify-center items-center h-screen flex-col gap-5'>
             <img src="../img/Login@3x.png" alt="" className='z-[-1] fixed w-screen h-screen' />
             <ThreeCircles
               height="70"
               width="70"
-              color="#ff8d2a"
+              color="#D8277C"
               wrapperStyle={{}}
               wrapperClass=""
               visible={true}
@@ -67,8 +87,7 @@ const Home = () => {
                 </div>
                 
                 <div className='w-full flex flex-col gap-2'>
-                  <button className='flex py-[16px] px-[24] justify-center items-center gap-[16px] rounded-[16px] text-white pink-gradiant'><FaWallet/> Connect Wallet</button>
-                  <button className='flex py-[16px] px-[24] justify-center items-center gap-[16px] rounded-[16px] text-white bg-[#1DA1F2] hover:opacity-80'><FaTwitter/> Connect Twitter</button>
+                  <button className='flex py-[16px] px-[24px] justify-center items-center gap-[16px] rounded-[16px] text-white bg-[#1DA1F2] hover:opacity-80' onClick={() => login()}><FaTwitter/> Connect Twitter</button>
                 </div>
                 <p className='text-fontgrey text-base text-center w-full sm:w-5/6'>By connecting your twitter you agree to our <span className='text-white'>Terms of Use</span> and <span className='text-white'>Privacy Policy</span> </p>
 
@@ -96,9 +115,6 @@ const Home = () => {
         </Layout>
 
       }
-      
-
-    
     </>
   )
 }

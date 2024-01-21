@@ -76,22 +76,26 @@ body {
 }
 
 .wallet-adapter-button .wallet-adapter-button-trigger {
- background-color: #FDEFB4 !important;
+  background: linear-gradient(170deg, #D8277C 25.7%, #B71FFF 78.53%)!important;
 }
 
 .wallet-adapter-button-trigger {
-  background-color: #FDEFB4 !important;
-  border: 1px solid #000 !important;
-  color: #000 !important;
-  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  border-radius: 10px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(170deg, #D8277C 25.7%, #B71FFF 78.53%) !important;
+  width: 100%;
+  height: 32px;
+  font-size: 14px;
+  color: #fff !important;
+  font-weight: 400 !important;
+  border-radius: 100px !important;
+  gap: 16px !important;
+  padding: 0px 16px
 }
 
 .wallet-adapter-button-trigger:hover {
-  background-color: #60D8D3 !important;
+  background: linear-gradient(170deg, #B71FFF 25.7%, #D8277C 78.53%) !important;
 }
 
 .pink-gradiant {
@@ -176,4 +180,8 @@ body {
   border: 1px solid rgba(43, 46, 49, 0.24);
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(5, 2, 9, 0.80);
   backdrop-filter: blur(12px);
+}
+
+.linear-text-gradient {
+  background-image: linear-gradient(170deg, #B71FFF 25.7%, #D8277C 78.53%);
 }
