@@ -27,7 +27,7 @@ const TweetButton = (props: any) => {
     return (
         <div>
             <button disabled={remainingTime > 0} onClick={handleTweet}>Tweet</button>
-            {remainingTime > 0 && <p>You can tweet again in {remainingTime} milliseconds.</p>}
+            {remainingTime > 0 && <p>You can tweet again in {remainingTime} milliseconds.</p>},
         </div>
     );
 }

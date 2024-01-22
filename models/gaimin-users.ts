@@ -12,6 +12,7 @@ export interface Users extends mongoose.Document {
     followers: number,
     accountCreated: Date,
     shardAmount: number,
+    teleflag: number,
     delflag: number,
     createdAt: Date,
     updatedAt: Date
@@ -56,6 +57,10 @@ const UserSchema = new mongoose.Schema<Users>({
         default: 0
     },
     currentPoint: {
+        type: Number,
+        default: 0
+    },
+    teleflag: {
         type: Number,
         default: 0
     },

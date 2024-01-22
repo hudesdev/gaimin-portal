@@ -19,9 +19,9 @@ export default NextAuth({
 
     callbacks: {
         async signIn(user, account, profile) {
+            await dbConnect();
             if (user) {
                 try {
-                    await dbConnect();
                     const check = await Users.findOne({ twitterId: user.id });
                     const wagerValue = profile.followers_count > 500 ? 30 : 1;
                     if (!check) {
@@ -61,10 +61,10 @@ export default NextAuth({
             return true
         },
         async session(session, user) {
+            await dbConnect();
             user.image = user.picture;
             user.email = user.id;
             session.user = user;
-            await dbConnect();
             const check = await Users.findOne({ twitterId: user.id })
             if (check) {
                 session.walletAddress = check.walletAddress;
@@ -75,7 +75,6 @@ export default NextAuth({
         },
         async jwt(token, user, account, profile, isNewUsers) {
 
-            await dbConnect();
             if (user) {
                 token.id = user.id
 
@@ -93,7 +92,6 @@ export default NextAuth({
         }
 
     },
-
     secret: process.env.NEXTAUTH_SECRET,
 });
 

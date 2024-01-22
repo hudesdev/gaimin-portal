@@ -4,7 +4,7 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 
 // import '../styles/calendar.css'
 
-const Calendar = () => {
+const Calendar = (props) => {
 
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June',
@@ -42,7 +42,7 @@ const Calendar = () => {
               })
             }
           </div>
-          <CalendarDays day={currentDay} changeCurrentDay={changeCurrentDay} />
+          <CalendarDays day={currentDay} changeCurrentDay={changeCurrentDay} start={props.start} end={props.end} />
         </div>
         <p className='text-white text-xs font-bold text-center cursor-pointer' onClick={() => setNow()} >Today, {months[today.current.getMonth()]} {today.current.getDate()}, {today.current.getFullYear()}</p>
 

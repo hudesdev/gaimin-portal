@@ -10,7 +10,7 @@ export const useLeaderBoard = () => {
       });
 
     return {
-        data: error || !data ? [] : data,
+        leadData: error || !data ? [] : data,
         isLoading,
     };
 };

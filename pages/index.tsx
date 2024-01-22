@@ -13,10 +13,10 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 const meta = {
-  title: 'Gaimin',
+  title: 'Gaimin-Portal',
   description: 'The vision of the project is to allow users to earn $GMRX.',
-  icons: "/img/GAIMIN_G_Logo_White.jpg",
-  image: "../main.jpg",
+  icons: "../favicon.ico",
+  image: "https://assets-global.website-files.com/63d5b026b0a17e3e59e9aefb/63d721cadbdc86964cfb0462_GAIMIN%20Screen%20Saver%201920%20x%201080%2072dpi.webp",
   type: "website",
 };
 
@@ -32,7 +32,6 @@ const Home = () => {
 
   useEffect(() => {
     if (session) {
-      // console.log("=====>> session", session);
       router.push("/dashboard");
 
     }
@@ -50,7 +49,7 @@ const Home = () => {
     if (session) {
       signOut();
     } else {
-      signIn();
+      signIn("twitter", { redirect: true, callbackUrl: '/dashboard' });
     }
   }
 
@@ -61,19 +60,19 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        {/* <meta property="og:url" content={`https://tweet2earn.xyz`} />
-        <link rel="canonical" href={`https://tweet2earn.xyz`} /> */}
+        <meta property="og:url" content={`https://gaimin.io`} />
+        <link rel="canonical" href={`https://gaimin.io`} />
         <link rel="icon" href={meta.icons} sizes="any" />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Gaimin" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
-        {/* <meta property="og:image" content={meta.image} /> */}
+        <meta property="og:image" content={meta.image} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="Gaimin" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        {/* <meta name="twitter:image" content={meta.image} /> */}
+        <meta name="twitter:image" content={meta.image} />
       </Head>
       {!time ? <div className='w-full flex justify-center items-center h-screen flex-col gap-5'>
         <img src="../img/Login@3x.png" alt="" className='z-[-1] fixed w-screen h-screen' />

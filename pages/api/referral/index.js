@@ -1,6 +1,6 @@
 import dbConnect from '../../../util/dbConnect';
-import Referral from '../../../models/referral'
-import Users from '../../../models/users'
+import Referral from '../../../models/gaimin-referral'
+import Users from '../../../models/gaimin-users'
 import { getToken } from "next-auth/jwt";
 
 export default async function handler(req, res) {
@@ -12,33 +12,14 @@ export default async function handler(req, res) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
+  if (!token) return res.status(400).json({ msg: 'Unauthorized request!' });
 
   await dbConnect()
 
   switch (method) {
-    case 'GET' /* Get a model by its ID */:
-      try {
-        if (token) {
 
-          const allItems = await Referral.find({ senderID: token.sub }).sort({ createdAt: -1 });
-          if (allItems.length > 0) {
-            // const setPoint = await Users.findOneAndUpdate({ twitterId: token.id }, { $inc: { currentPoint: allItems.length * 10 } });
-            // const setTrue = await Referral.updateMany({ senderID: token.id }, {
-            //   $set: {
-            //     used: true
-            //   }
-            // })
-            res.status(200).json({ allItems });
-          } else {
-            res.status(400).json({ success: false })
-          }
-        }
-      } catch (error) {
-        console.log("Database error", error);
-      }
-      break
     case 'POST' /* Get a model by its ID */:
-
+   
       try {
         const sender = body;
         if (sender) {
@@ -70,21 +51,9 @@ export default async function handler(req, res) {
         res.status(400).json({ success: false })
       }
       break
-    case 'PUT' /* Edit a model by its ID */:
-      // try {
-      //   const item = await Items.findById(body._id)
-      //   if (!item) {
-      //     return res.status(400).json({ message: "Item no exists!" });
-      //   }
-
-      //   res.status(200).send({ success: true, data: item });
-      // } catch (error) {
-      //   res.status(400).json({ success: false })
-      // }
-      break
 
     default:
-      res.status(400).json({ success: false })
+      res.status(400).json({ success:  false })
       break
   }
 }

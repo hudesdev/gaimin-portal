@@ -8,7 +8,7 @@ export const useAuth = () => {
     const { data, error, isLoading } = useSWR('/api/user/', url => fetch(url).then(res => res.json()), {
         refreshInterval: 30000,
     });
-
+    
     return {
         data: error || !data ? [] : data,
         isLoading,
